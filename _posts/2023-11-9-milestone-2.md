@@ -103,13 +103,24 @@ Dans cette section, nous explorerons l'utilisation de modèles avancés, en part
 
 Nous avons entraîné un classificateur XGBoost en utilisant uniquement les caractéristiques de distance et d'angle, reproduisant ainsi la configuration de la partie 3. 
 
-// glisser résultats ici avec les images et lien comet
+// glisser résultats ici avec les images
+
+Lien Comet :
+[XGBoost - Distance et angle](https://www.comet.com/ift6758-a02/milestone2/bff2db3313e549c6a53c8f57d1871550)
 
 #### Entraînement du classificateur XGBoost avec toutes les caractéristiques et réglage des hyperparamètres
 
 Ensuite, nous avons exploré l'entraînement d'un classificateur XGBoost en utilisant toutes les caractéristiques créées dans la partie 4. Nous effectuerons des réglages d'hyperparamètres pour trouver le modèle le plus performant.
 
-// mettre résultats et explication des choix d'hyperparamètres + lien comet
+// mettre résultats et explication des choix d'hyperparamètres 
+
+
+Liens Comet : 
+[XGBoost - Toutes les caractéristiques](https://www.comet.com/ift6758-a02/milestone2/b634c7efe1fc42369613d05656e8fe08)
+
+
+[XGBoost - Choix hyperparamètres](https://www.comet.com/ift6758-a02/milestone2/001b23a315ae4be486c9aac9be25c971)
+
 
 #### Exploration de la sélection de caractéristiques
 
