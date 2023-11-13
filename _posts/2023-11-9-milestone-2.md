@@ -8,19 +8,19 @@ title: Milestone 2
 
 ### Histogramme des tirs regroupés par distance
 
-// Mettre image
+{% include image.html url="../public/Hist_tirs_binned_distance.png" description = "Histogramme des tirs regroupés par distance"%}
 
 Cet histogramme illustre clairement que la plupart des tirs au hockey sont des non-buts et sont répartis sur l'ensemble des distances, avec une tendance marquée pour les buts à être plus fréquents à proximité du but. On observe une concentration élevée de tirs à des distances plus courtes, ce qui diminue progressivement à mesure que la distance au but augmente. Les buts sont nettement moins nombreux que les non-buts, ce qui suggère que la distance est un indicateur significatif pour prédire les buts, mais elle ne doit pas être le seul critère utilisé étant donné la présence de buts à toutes les distances. L'importante disproportion entre les buts et les non-buts souligne également le problème potentiel de déséquilibre des classes dans les modèles prédictifs.
 
-### Histogramme des tirs regroupés par angles
+### Histogramme des tirs regroupés par angle
 
-// Mettre image
+{% include image.html url="../public/Hist_tirs_binned_angles.png" description = "Histogramme des tirs regroupés par angle"%}
 
 Cet histogramme montre la répartition des tirs au hockey en fonction de l'angle relatif au but. On remarque que les non-buts dominent largement sur l'ensemble des angles, mais la plupart des buts se produisent à des angles proches de zéro, ce qui correspond à l'angle frontal par rapport au but. La distribution des tirs est la plus dense autour de cet angle frontal, indique que les tirs sont plus fréquents et plus susceptibles d'être convertis en buts lorsqu'ils sont pris de face. Cet histogramme suggère que l'angle est un facteur important dans la prédiction des buts, bien qu'il y ait aussi des buts marqués à des angles variés, ce qui implique que d'autres facteurs doivent être pris en compte pour une prédiction précise des tirs réussis.
 
-### Un histogramme 2D où un axe est la distance et l'autre est l'angle.
+### Un histogramme 2D où un axe est la distance et l'autre est l'angle
 
-// Mettre image
+{% include image.html url="../public/Hist_2D_dist_angles.png" description = "Un histogramme 2D distance et angle"%}
 
 L'histogramme 2D présenté montre la distribution des tirs au hockey en fonction de deux variables : la distance au but (Distancetonet) et l'angle relatif au but (Relativeangletonet). 
 
