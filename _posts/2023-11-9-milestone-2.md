@@ -72,7 +72,28 @@ En conclusion, l'ajout de l'angle ne dégrade pas les performances du modèle ma
 
 ## 3. Ingénierie des caractéristiques II
 
+Voici la liste des charactéristiques créées pour cette section:
 
+- *periodTimeInSeconds* : compte le nombre de secondes jouées pendant la période
+- *isGoal* : indication du succès du tir
+- *previousEventTypeId* : décrit l'évènement précédent
+- *previousX* : la position sur l'axe X de l'évènement précédent
+- *previousY* : la position sur l'axe Y de l'évènement précédent
+- *distanceFromPrevious* : la distance entre le tir et l'évènement précédent
+- *timeDiff* : le temps écoulé depuis l'évènement précédent
+- *rebond* : indicatif tir comme évènement précédent
+- *angleChange* : le changement d'angle par rapoort au filet depuis l'évènement précédent
+- *vitesse* : charactérise le déplacement depuis l'évènement précédent, relativement au temps du deéplacement depuis l'évènement précédent
+- *season* : saison de Hockey du match, pour s'assurer que l'acquisition des données se passe comme il se doit
+
+Pour le Bonus nous avons rajouté : 
+- *gameTime* : compte le nombre de secondes jouées pendant la partie
+- *homePlayer* : indication du nombre de joueurs sur la glace de l'équipe HOME
+- *awayPlayer* : indication du nombre de joueurs sur la glace de l'équipe AWAY
+- *homePenaltySecondsRemaining* : le nombre de secondes de pénalité restante de l'équipe HOME
+- *awayPenaltySecondsRemaining* : le nombre de secondes de pénalité restante de l'équipe AWAY
+- *attackingTeamPlayer* : indication du nombre de joueur sur la glace de l'équipe attaquante
+- *defendingTeamPlayer* : indication du nombre de joueur sur la glace de l'équipe défensive
 
 ## 4. Modèles avancés
 
