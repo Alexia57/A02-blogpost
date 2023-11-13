@@ -200,6 +200,14 @@ Chaque technique de sélection de caractéristiques a été suivie d'une évalua
 #### Comparaison des performances
 Les performances des différents modèles après la sélection de caractéristiques ont été comparées. Nous avons intégré les courbes correspondantes pour chaque modèle dans nos figures existantes pour une comparaison visuelle.
 
+{% include image.html url="../public/roc_selection.png" description = "Courbe ROC et AUC modèles XGBoost méthode de sélection de caractéristiques"%}
+
+{% include image.html url="../public/goal_rate_selection.png" description = "Taux de buts par rapport au centile de probabilité des modèles XGBoost méthode de sélection de caractéristiques"%}
+
+{% include image.html url="../public/cumule_selection.png" description = "Proportion cumulée de but vs percentile de probabilité des modèles XGBoost méthode de sélection de caractéristiques"%}
+
+{% include image.html url="../public/fiabilite_selection.png" description = "Courbes de calibration des modèles XGBoost méthode de sélection de caractéristiques"%}
+
 Lien Comet de cette expérience :
 
 [XGBoost - Sélection de caractéristiques]()
