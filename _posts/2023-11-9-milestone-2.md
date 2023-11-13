@@ -99,16 +99,37 @@ Pour le Bonus nous avons rajouté :
 
 Dans cette section, nous explorerons l'utilisation de modèles avancés, en particulier les classificateurs XGBoost, pour améliorer nos résultats par rapport aux modèles de régression logistique simples présentés dans la partie 3. Nous évaluerons aussi les performances en utilisant des mesures quantitatives telles que ROC/AUC, le taux de buts vs percentile de probabilité, la proportion cumulée de buts vs percentile de probabilité, et la courbe de fiabilité.
 
-#### Entraînement du classificateur XGBoost avec les caractéristiques de distance et d'angle (Similaire à la Partie 3)
+### Entraînement du classificateur XGBoost avec les caractéristiques de distance et d'angle (Similaire à la Partie 3)
 
-Nous avons entraîné un classificateur XGBoost en utilisant uniquement les caractéristiques de distance et d'angle, reproduisant ainsi la configuration de la partie 3. 
+Dans cette étape de notre exploration, nous avons décidé d'entraîner un classificateur XGBoost en utilisant uniquement les caractéristiques de distance et d'angle, similaires à ce que nous avons fait dans la partie précédente (Partie 3). À ce stade, notre objectif n'est pas d'optimiser les hyperparamètres, mais plutôt de créer une ligne de base pour évaluer l'impact des caractéristiques supplémentaires que nous ajouterons par la suite.
 
-// glisser résultats ici avec les images
+#### Préparation des Données
+Nous avons extrait les caractéristiques pertinentes du jeu de données, se limitant à la distance par rapport au filet et à l'angle relatif par rapport au filet. 
 
-Lien Comet :
+#### Entraînement du Modèle XGBoost
+Nous avons utilisé le modèle XGBoost pour entraîner notre classificateur. 
+
+#### Évaluation des Performances
+Une fois le modèle entraîné, nous avons évalué ses performances sur l'ensemble de validation. La matrice de confusion et diverses métriques ont été utilisées pour analyser les résultats.
+Les résultats montrent une accuracy globale de 90.64%, avec des accuracies significativement différentes entre les classes 0 et 1.
+
+#### Analyse des Résultats
+Pour une analyse plus approfondie, nous avons généré plusieurs graphiques, notamment la courbe ROC, le taux de buts par centile, le taux de buts cumulatif, et la courbe de calibration. Ces visualisations fournissent des insights précieux sur les performances du modèle dans différentes situations.
+
+{% include image.html url="../public/roc_xgb_dist_angle.png" description = "Courbe ROC et AUC modèle XGBoost avec distance et angle"%}
+
+{% include image.html url="../public/goal_rate_xgb_dist_angle.png" description = "Taux de buts par rapport au centile de probabilité du modèle XGBoost avec distance et angle"%}
+
+{% include image.html url="../public/cumule_xgb_dist_angle.png" description = "Proportion cumulée de but vs percentile de probabilité du modèle XGBoost avec distance et angle"%}
+
+{% include image.html url="../public/fiabilite_xgb_dist_angle.png" description = "Courbes de calibration du modèle XGBoost avec distance et angle"%}
+
+Lien Comet de cette expérience :
 [XGBoost - Distance et angle](https://www.comet.com/ift6758-a02/milestone2/bff2db3313e549c6a53c8f57d1871550)
 
-#### Entraînement du classificateur XGBoost avec toutes les caractéristiques et réglage des hyperparamètres
+Dans la prochaine partie, nous enrichirons notre modèle en ajoutant plus de caractéristiques pour voir comment cela affecte ses performances.
+
+### Entraînement du classificateur XGBoost avec toutes les caractéristiques et réglage des hyperparamètres
 
 Ensuite, nous avons exploré l'entraînement d'un classificateur XGBoost en utilisant toutes les caractéristiques créées dans la partie 4. Nous effectuerons des réglages d'hyperparamètres pour trouver le modèle le plus performant.
 
@@ -122,7 +143,7 @@ Liens Comet :
 [XGBoost - Choix hyperparamètres](https://www.comet.com/ift6758-a02/milestone2/001b23a315ae4be486c9aac9be25c971)
 
 
-#### Exploration de la sélection de caractéristiques
+### Exploration de la sélection de caractéristiques
 
 Enfin, nous avons utilisé différentes techniques de sélection de caractéristiques pour simplifier notre ensemble d'entrée.
 
