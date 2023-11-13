@@ -125,6 +125,7 @@ Pour une analyse plus approfondie, nous avons généré plusieurs graphiques, no
 {% include image.html url="../public/fiabilite_xgb_dist_angle.png" description = "Courbes de calibration du modèle XGBoost avec distance et angle"%}
 
 Lien Comet de cette expérience :
+
 [XGBoost - Distance et angle](https://www.comet.com/ift6758-a02/milestone2/bff2db3313e549c6a53c8f57d1871550)
 
 Dans la prochaine partie, nous enrichirons notre modèle en ajoutant plus de caractéristiques pour voir comment cela affecte ses performances.
@@ -176,11 +177,32 @@ Dans la prochaine partie, nous explorerons d'autres moyens d'affiner encore dava
 
 ### Exploration de la sélection de caractéristiques
 
-Enfin, nous avons utilisé différentes techniques de sélection de caractéristiques pour simplifier notre ensemble d'entrée.
+Enfin, nous avons entrepris d'explorer différentes techniques de sélection de caractéristiques pour simplifier notre ensemble d'entrée et potentiellement améliorer les performances du modèle XGBoost. Nous avons suivi plusieurs pistes avec des méthodes embarquées, d'encapsulation ou de filtrage. Nous avons examiné la corrélation entre les caractéristiques, utilisé la régression Lasso, la sélection récursive de caractéristiques (RFE), et exploité l'importance des caractéristiques du modèle XGBoost via SHAP.
 
-// idem res + comet
+#### Analyse de corrélation
+Pour identifier des caractéristiques potentiellement redondantes, nous avons créé une matrice de corrélation. Des informations corrélées peuvent suggérer des opportunités de simplification.
 
+#### Régression Lasso
+La régression Lasso a été utilisée pour pénaliser les coefficients non essentiels, conduisant potentiellement à une sélection automatique de caractéristiques.
 
+#### Sélection RFE
+La méthode de sélection récursive de caractéristiques (RFE) a été employée pour identifier les caractéristiques les plus importantes en se basant sur l'apprentissage du modèle.
+
+#### Importance des caractéristiques XGBoost
+L'importance des caractéristiques a été évaluée en utilisant le modèle XGBoost lui-même. Les caractéristiques significatives ont été extraites pour simplifier l'ensemble d'entrée.
+
+#### SHAP
+SHAP (SHapley Additive exPlanations) a été employé pour interpréter les caractéristiques sur lesquelles le modèle repose le plus. Cela nous a guidés dans la sélection de caractéristiques cruciales.
+
+#### Évaluation des Modèles après la sélection de caractéristiques
+Chaque technique de sélection de caractéristiques a été suivie d'une évaluation du modèle XGBoost avec l'ensemble réduit de caractéristiques. Les accuracies ont été calculées pour chaque approche.
+
+#### Comparaison des performances
+Les performances des différents modèles après la sélection de caractéristiques ont été comparées. Nous avons intégré les courbes correspondantes pour chaque modèle dans nos figures existantes pour une comparaison visuelle.
+
+Lien Comet de cette expérience :
+
+[XGBoost - Sélection de caractéristiques]()
 
 ## 5. Faites de votre mieux!
 
