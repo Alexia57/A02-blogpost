@@ -103,17 +103,17 @@ Dans cette section, nous explorerons l'utilisation de modèles avancés, en part
 
 Dans cette étape de notre exploration, nous avons décidé d'entraîner un classificateur XGBoost en utilisant uniquement les caractéristiques de distance et d'angle, similaires à ce que nous avons fait dans la partie précédente (Partie 3). À ce stade, notre objectif n'est pas d'optimiser les hyperparamètres, mais plutôt de créer une ligne de base pour évaluer l'impact des caractéristiques supplémentaires que nous ajouterons par la suite.
 
-#### Préparation des Données
+#### Préparation des données
 Nous avons extrait les caractéristiques pertinentes du jeu de données, se limitant à la distance par rapport au filet et à l'angle relatif par rapport au filet. 
 
-#### Entraînement du Modèle XGBoost
+#### Entraînement du modèle XGBoost
 Nous avons utilisé le modèle XGBoost pour entraîner notre classificateur. 
 
-#### Évaluation des Performances
+#### Évaluation des performances
 Une fois le modèle entraîné, nous avons évalué ses performances sur l'ensemble de validation. La matrice de confusion et diverses métriques ont été utilisées pour analyser les résultats.
 Les résultats montrent une accuracy globale de 90.64%, avec des accuracies significativement différentes entre les classes 0 et 1.
 
-#### Analyse des Résultats
+#### Analyse des résultats
 Pour une analyse plus approfondie, nous avons généré plusieurs graphiques, notamment la courbe ROC, le taux de buts par centile, le taux de buts cumulatif, et la courbe de calibration. Ces visualisations fournissent des insights précieux sur les performances du modèle dans différentes situations.
 
 {% include image.html url="../public/roc_xgb_dist_angle.png" description = "Courbe ROC et AUC modèle XGBoost avec distance et angle"%}
@@ -131,17 +131,48 @@ Dans la prochaine partie, nous enrichirons notre modèle en ajoutant plus de car
 
 ### Entraînement du classificateur XGBoost avec toutes les caractéristiques et réglage des hyperparamètres
 
-Ensuite, nous avons exploré l'entraînement d'un classificateur XGBoost en utilisant toutes les caractéristiques créées dans la partie 4. Nous effectuerons des réglages d'hyperparamètres pour trouver le modèle le plus performant.
+Dans cette étape cruciale, nous avons étendu notre modèle en utilisant toutes les caractéristiques développées dans la Partie 4 de notre exploration. Notre objectif était d'exploiter au maximum l'information disponible pour obtenir des prédictions plus précises. De plus, nous avons entrepris une recherche minutieuse d'hyperparamètres pour optimiser les performances du modèle.
 
-// mettre résultats et explication des choix d'hyperparamètres 
+#### Préparation des données
+Avant d'entraîner le modèle, nous avons effectué une vérification et un nettoyage des données. Certaines caractéristiques présentaient des valeurs manquantes et infinies, auxquelles nous avons répondu en éliminant les lignes correspondantes, privilégiant ainsi la simplicité de la suppression à des changements complexes.
+Ensuite, nous avons adapté le format de certaines caractéristiques pour les rendre compatibles avec l'entraînement du modèle, par exemple, en créant des variables binaires pour des caractéristiques catégorielles (ex : type de tirs).
+
+#### Entraînement du modèle XGBoost
+Nous avons divisé nos données en ensembles d'entraînement et de validation, puis procédé à l'entraînement du modèle XGBoost comme vu au dessus. 
+Les performances du modèle ont montré une accuracy globale de 90.89%, avec encore des différences notables entre les classes 0 et 1.
+
+#### Réglage des hyperparamètres
+Nous avons entrepris une recherche approfondie pour trouver la combinaison optimale des hyperparamètres afin d'avoir les meilleurs résultats possibles pour le modèle. Une recherche par grille avec validation croisée a été réalisée sur un ensemble diversifié d'hyperparamètres.
+
+Les meilleurs hyperparamètres identifiés étaient :
+- colsample_bytree: 1.0
+- learning_rate: 0.1
+- max_depth: 5
+- min_child_weight: 2
+- n_estimators: 300
+- subsample: 1.0
+La meilleure performance obtenue avec ces hyperparamètres était une accuracy de 90.91%.
+
+#### Comparaison avec le Modèle de Base
+Pour évaluer l'impact de ces ajustements, nous avons intégré les courbes correspondantes du meilleur modèle dans nos figures existantes et comparé les résultats avec le modèle de base de la première partie de notre exploration.
+
+{% include image.html url="../public/roc_xgbs.png" description = "Courbe ROC et AUC modèles XGBoost"%}
+
+{% include image.html url="../public/goal_rate_xgbs.png" description = "Taux de buts par rapport au centile de probabilité des modèles XGBoost"%}
+
+{% include image.html url="../public/cumule_xgbs.png" description = "Proportion cumulée de but vs percentile de probabilité des modèles XGBoost"%}
+
+{% include image.html url="../public/fiabilite_xgbs.png" description = "Courbes de calibration des modèles XGBoost"%}
+
+La comparaison a révélé une légère amélioration par rapport au modèle de base, d'où l'importance de l'ajout de nouvelles caractéristiques et de chercher les meilleurs hyperparamètres.
 
 
-Liens Comet : 
-[XGBoost - Toutes les caractéristiques](https://www.comet.com/ift6758-a02/milestone2/b634c7efe1fc42369613d05656e8fe08)
+Liens Comet vers ces expériences : 
 
+- [XGBoost - Toutes les caractéristiques](https://www.comet.com/ift6758-a02/milestone2/b634c7efe1fc42369613d05656e8fe08)
+- [XGBoost - Choix hyperparamètres](https://www.comet.com/ift6758-a02/milestone2/001b23a315ae4be486c9aac9be25c971)
 
-[XGBoost - Choix hyperparamètres](https://www.comet.com/ift6758-a02/milestone2/001b23a315ae4be486c9aac9be25c971)
-
+Dans la prochaine partie, nous explorerons d'autres moyens d'affiner encore davantage notre modèle.
 
 ### Exploration de la sélection de caractéristiques
 
