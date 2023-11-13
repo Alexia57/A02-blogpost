@@ -6,12 +6,12 @@ title: Milestone 2
 
 ## 1. Ingénierie des caractéristiques I
 
-blabla
+
 
 ## 2. Modèles de base
 
 ### 3.3 Analyse des résultats
-La regression logistique avec uniquement la distance a une prédiction de 0.91 ce qui semble être une performance. Mais les résultats de la matrice de confusion montrent que le modèle a enregistré 55 432 vrais négatifs et 5 728 faux négatifs. Il n'y a eu aucun vrai positif ni faux positif, ce qui signifie que le modèle a systématiquement prédit des non-buts, quelle que soit la situation.
+La regression logistique en utilisant uniquement la distance comme caractéristique a une prédiction de 0.91 ce qui semble être une bonne performance. Mais les résultats de la matrice de confusion montrent que le modèle a enregistré 55 432 vrais négatifs et 5 728 faux négatifs. Il n'y a eu aucun vrai positif ni faux positif, ce qui signifie que le modèle a systématiquement prédit des non-buts, quelle que soit la situation.
 
 Il existe un déséquilibre notable dans le jeu de données, avec une proportion beaucoup plus élevée de non-buts que de buts. Ce déséquilibre peut conduire le modèle à pencher vers la prédiction la plus courante, c'est-à-dire le non-but. 
 
@@ -20,13 +20,13 @@ Se baser uniquement sur la distance du tir pour prédire le résultat est trop s
 
 ### 3.6 Interprétation des résultats 
 
-{% include Courbe_ROC_reg_logist.html url="../public/Courbe_ROC_reg_logist.png" description = "Courbe ROC et AUC"%}
+{% include image.html url="../public/Courbe_ROC_reg_logist.png" description = "Courbe ROC et AUC"%}
 
-{% include taux_but_centile_reg_logist.html url="../public/taux_but_centile_reg_logist.png" description = "Taux de buts par rapport au centile de probabilité"%}
+{% include image.html url="../public/taux_but_centile_reg_logist.png" description = "Taux de buts par rapport au centile de probabilité"%}
 
-{% include Prop_cumul_but_vs_percentile_prob_reg_logist.html url="../public/Prop_cumul_but_vs_percentile_prob_reg_logist.png" description = "Proportion cumulée de but vs percentile de probabilité"%}
+{% include image.html url="../public/Prop_cumul_but_vs_percentile_prob_reg_logist.png" description = "Proportion cumulée de but vs percentile de probabilité"%}
 
-{% include courbes_calibration_reg_logist.html url="../public/courbes_calibration_reg_logist.png" description = "Courbes de calibration"%}
+{% include image.html url="../public/courbes_calibration_reg_logist.png" description = "Courbes de calibration"%}
 
 #### Comet
 - [Regression logistique - Distance](https://www.comet.com/ift6758-a02/milestone2/31472011c3f74857aad637eaa83e108a)
@@ -55,6 +55,26 @@ En conclusion, l'ajout de l'angle ne dégrade pas les performances du modèle ma
 
 
 ## 4. Modèles avancés
+
+Dans cette section, nous explorerons l'utilisation de modèles avancés, en particulier les classificateurs XGBoost, pour améliorer nos résultats par rapport aux modèles de régression logistique simples présentés dans la partie 3. Nous évaluerons aussi les performances en utilisant des mesures quantitatives telles que ROC/AUC, le taux de buts vs percentile de probabilité, la proportion cumulée de buts vs percentile de probabilité, et la courbe de fiabilité.
+
+#### Entraînement du classificateur XGBoost avec les caractéristiques de distance et d'angle (Similaire à la Partie 3)
+
+Nous avons entraîné un classificateur XGBoost en utilisant uniquement les caractéristiques de distance et d'angle, reproduisant ainsi la configuration de la partie 3. 
+
+// glisser résultats ici avec les images et lien comet
+
+#### Entraînement du classificateur XGBoost avec toutes les caractéristiques et réglage des hyperparamètres
+
+Ensuite, nous avons exploré l'entraînement d'un classificateur XGBoost en utilisant toutes les caractéristiques créées dans la partie 4. Nous effectuerons des réglages d'hyperparamètres pour trouver le modèle le plus performant.
+
+// mettre résultats et explication des choix d'hyperparamètres + lien comet
+
+#### Exploration de la sélection de caractéristiques
+
+Enfin, nous avons utilisé différentes techniques de sélection de caractéristiques pour simplifier notre ensemble d'entrée.
+
+// idem res + comet
 
 
 
