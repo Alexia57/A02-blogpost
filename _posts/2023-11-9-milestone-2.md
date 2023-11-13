@@ -28,6 +28,37 @@ La concentration de données montre une densité élevée de tirs à des distanc
 
 Cette visualisation met en évidence l'importance de la proximité et de l'orientation par rapport au but dans la probabilité de marquer, et suggère que ces deux facteurs pourraient être des prédicteurs utiles dans un modèle de régression logistique.
 
+### Taux de buts
+
+**Taux de buts en fonction de la distance**
+
+{% include image.html url="../public/goal_rate_distance.png" description = "Un histogramme du taux de buts en fonction de la distance au filet"%}
+
+Les données révèlent une corrélation significative entre la distance au filet et le taux de but. Les tirs réalisés à des distances plus courtes semblent être plus efficaces, avec un taux de but atteignant 0.2 dans la plage 0-10. Cette observation est cohérente avec l'idée générale que la proximité au filet augmente les chances de marquer. La baisse marquée du taux de but dans la plage [60-70] suggère que les joueurs peuvent rencontrer des défis particuliers à ces distances, peut-être en raison de la nécessité d'une puissance de tir accrue et d'une meilleure précision.
+
+**Taux de buts en fonction de l'angle'**
+
+{% include image.html url="../public/goal_rate_angle.png" description = "Un histogramme du taux de buts en fonction de l'angle relatif au filet'"%}
+
+L'analyse des taux de but en fonction de l'angle du tir révèle des tendances intéressantes. Les angles faibles (0-120 degrés) montrent des taux de but relativement bas, indiquant la difficulté d'atteindre la cible depuis ces positions. Cependant, les angles de tir dans la plage 140-150 degrés se démarquent avec les taux de but les plus élevés, atteignant jusqu'à 0.5. Cela pourrait être dû à des facteurs tels que des ouvertures dans la défense ou une plus grande difficulté pour le gardien à intercepter ces tirs.
+
+Globalement, les données analysées suggèrent que la proximité au filet semble jouer un rôle crucial dans le succès des tirs, avec des taux de but plus élevés observés à des distances plus courtes. De même, différentes zones d'angles de tir présentent des variations significatives dans les taux de réussite, soulignant l'importance de la précision et de la stratégie dans la sélection des angles de tir.
+
+
+### Histogramme des buts classés par distance
+
+{% include image.html url="../public/hist_goal_by_distance.png" description = "Un histogramme du nombre de buts classés par distances et en fonction du vilet (vide ou pas vide)'"%}
+
+Les buts marqués avec le filet non vide présentent des tendances distinctes en fonction de la distance par rapport au filet. À une distance de 0-5 pieds, le nombre de buts est relativement bas, suggérant une difficulté à marquer de près, peut-être en raison de la présence immédiate du gardien de but. Cependant, une augmentation significative se produit à une distance 5-15 pieds, atteignant un pic remarquable de 6000 buts à une distance 10-15 pieds. Cette augmentation pourrait indiquer une zone de tir privilégiée, où les joueurs ont plus de chances de réussir.
+
+Au-delà d'une distance de 78 pieds, le nombre de buts devient nul, soulignant une diminution abrupte de l'efficacité des tirs à des distances plus éloignées. Cette observation suggère que les tirs de longue distance ont peu de succès, probablement en raison d'une précision réduite ou de la facilité accrue pour le gardien de bloquer les tirs à grande distance.
+
+En ce qui concerne les buts avec filets vides, ils se distinguent par un nombre considérablement inférieur par rapport aux buts avec filets occupés. Entre 5 et 60 pieds, la moyenne de buts est d'environ 90, indiquant que les joueurs ont plus de difficulté à marquer lorsque le gardien n’est pas présent a cet intervalle de distance. Au-delà de 50 pieds, le nombre de buts diminue progressivement, oscillant entre 70 et 50 buts, ce qui suggère une réduction de l'efficacité des tirs à des distances moyennes.
+
+Une diminution significative se produit au-delà de 95 pieds, avec un nombre de buts chutant à environ 20. Cela souligne la rareté des buts à des distances très éloignées, indiquant une difficulté accrue pour les joueurs à marquer dans ces conditions.
+
+En conclusion, cette analyse met en évidence l'influence significative de la distance sur l'efficacité des tirs, observant que le nombre de buts devient nul au-delà de 78 pieds lorsque le filet est non vide.Ces tendances offrent des insights précieux pour comprendre les zones de succès et d'échec des tirs.
+
 ## 2. Modèles de base
 
 ### 3.3 Analyse des résultats
