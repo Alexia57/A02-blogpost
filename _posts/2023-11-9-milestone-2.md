@@ -269,6 +269,8 @@ L'ACP a fourni des perspectives précieuses, mais des ajustements supplémentair
 
 [Forêt aléatoire avec analyse en composante principale](https://www.comet.com/ift6758-a02/milestone2/dc4807831b3545478c1982932389a018)
 
+[Forêt aléatoire originale](https://www.comet.com/ift6758-a02/milestone2/8e40b7e7dbd649668b61935000f9d52c)
 
+[Forêt aléatoire avec division des données](https://www.comet.com/ift6758-a02/milestone2/e6263c839798427b89d65d942f236aab)
 
 ## 6. Évaluer sur l'ensemble de test 
