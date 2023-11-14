@@ -146,7 +146,7 @@ Une fois le modèle entraîné, nous avons évalué ses performances sur l'ensem
 Les résultats montrent une accuracy globale de 90.64%, avec des accuracies significativement différentes entre les classes 0 et 1.
 
 #### Analyse des résultats
-Pour une analyse plus approfondie, nous avons généré plusieurs graphiques, notamment la courbe ROC, le taux de buts par centile, le taux de buts cumulatif, et la courbe de calibration. Ces visualisations fournissent des insights précieux sur les performances du modèle dans différentes situations.
+Pour une analyse plus approfondie, nous avons généré plusieurs graphiques, notamment la courbe ROC, le taux de buts par centile, le taux de buts cumulatif, et la courbe de calibration. Ces visualisations fournissent des insights précieux sur les performances du modèle dans différentes situations. Ici, l'aire sous la courbe (AUC) est de 0.71, le taux de but diminue en fonction du centile de probabilité et le dernier point de la courbe de calibration s'éloigne fortement de l'optimal.
 
 {% include image.html url="../public/roc_xgb_dist_angle.png" description = "Courbe ROC et AUC modèle XGBoost avec distance et angle"%}
 
@@ -184,7 +184,7 @@ Les meilleurs hyperparamètres identifiés étaient :
 - min_child_weight: 2
 - n_estimators: 300
 - subsample: 1.0
-La meilleure performance obtenue avec ces hyperparamètres était une accuracy de 90.91%.
+La meilleure performance obtenue avec ces hyperparamètres était une accuracy de 90.91%. La différence est très légère.
 
 #### Comparaison avec le Modèle de Base
 Pour évaluer l'impact de ces ajustements, nous avons intégré les courbes correspondantes du meilleur modèle dans nos figures existantes et comparé les résultats avec le modèle de base de la première partie de notre exploration.
@@ -196,6 +196,8 @@ Pour évaluer l'impact de ces ajustements, nous avons intégré les courbes corr
 {% include image.html url="../public/cumule_xgbs.png" description = "Proportion cumulée de but vs percentile de probabilité des modèles XGBoost"%}
 
 {% include image.html url="../public/fiabilite_xgbs.png" description = "Courbes de calibration des modèles XGBoost"%}
+
+On remarque que l'AUC du modèle avec toutes les caractéristiques est de 0.74 et celui avec les meilleurs hyperparamètres de 0.75, ce qui est plus élevé que le modèle avec uniquement les caractéristiques de distance et d'angle. Aussi, le taux de but est plus élevé que pour le premier modèle lorsque le centile de probabilité est élevé. Enfin, les courbes de calibration des nouveaux modèles suivent plus la courbe parfaite même si n'est pas encore exactement bien.
 
 La comparaison a révélé une légère amélioration par rapport au modèle de base, d'où l'importance de l'ajout de nouvelles caractéristiques et de chercher les meilleurs hyperparamètres.
 
@@ -212,19 +214,19 @@ Dans la prochaine partie, nous explorerons d'autres moyens d'affiner encore dava
 Enfin, nous avons entrepris d'explorer différentes techniques de sélection de caractéristiques pour simplifier notre ensemble d'entrée et potentiellement améliorer les performances du modèle XGBoost. Nous avons suivi plusieurs pistes avec des méthodes embarquées, d'encapsulation ou de filtrage. Nous avons examiné la corrélation entre les caractéristiques, utilisé la régression Lasso, la sélection récursive de caractéristiques (RFE), et exploité l'importance des caractéristiques du modèle XGBoost via SHAP.
 
 #### Analyse de corrélation
-Pour identifier des caractéristiques potentiellement redondantes, nous avons créé une matrice de corrélation. Des informations corrélées peuvent suggérer des opportunités de simplification.
+Pour identifier des caractéristiques potentiellement redondantes, nous avons créé une matrice de corrélation. Des informations corrélées peuvent suggérer des opportunités de simplification. Les seuls carcatéristiques qui semblent bien corrélées sont "previousEventTypeId_SHOT" et "rebond" ce qui n'est pas étonnant. Puis il y a aussi "relativeAngleToNet" et "y" qui semble être un peu corrélées, mais aussi "previousEventTypeId_SHOT" et "angleChange" et enfin ce qui n'est pas surprenant vu ce qu'on vient de voir "angleChange" et "rebond". On peut donc s'attendre à voir disparaître certaines de ces caractéristiques dans la prochaine étape de sélection afin d'éviter les variables redondantes.
 
 #### Régression Lasso
-La régression Lasso a été utilisée pour pénaliser les coefficients non essentiels, conduisant potentiellement à une sélection automatique de caractéristiques.
+La régression Lasso a été utilisée pour pénaliser les coefficients non essentiels. On obtient ici un coefficient élevé négativement pour "distanceToNet", un un peu moins élevé positivement pour "vitesse" et encore quelques coefficients bien moins élevés dans l'ordre suivant : "timeDiff", "distanceFromPrevious", "previousY", etc. On résumé, cette méthode sélectionne les carcatéristiques suivantes : ['distanceToNet', 'vitesse', 'timeDiff', 'distanceFromPrevious', 'previousY', 'periodTimeInSeconds', 'relativeAngleToNet', 'y', 'angleChange', 'previousX'].
 
 #### Sélection RFE
-La méthode de sélection récursive de caractéristiques (RFE) a été employée pour identifier les caractéristiques les plus importantes en se basant sur l'apprentissage du modèle.
+La méthode de sélection récursive de caractéristiques (RFE) a été employée pour identifier les caractéristiques les plus importantes en se basant sur l'apprentissage du modèle. Ici, les caractéristiques sélectionnées sont les mêmes que celles utilisées dans la partie 3 : ['distanceToNet', 'relativeAngleToNet'].
 
 #### Importance des caractéristiques XGBoost
-L'importance des caractéristiques a été évaluée en utilisant le modèle XGBoost lui-même. Les caractéristiques significatives ont été extraites pour simplifier l'ensemble d'entrée.
+L'importance des caractéristiques a été évaluée en utilisant le modèle XGBoost lui-même. Les caractéristiques significatives ont été extraites pour simplifier l'ensemble d'entrée. A la fin, il reste encore beaucoup de caractéristiques : ['period', 'periodTimeInSeconds', 'y', 'distanceToNet', 'timeDiff', 'rebond', 'vitesse', 'typeDeTir_Backhand', 'typeDeTir_Deflected', 'typeDeTir_Slap Shot', 'typeDeTir_Snap Shot', 'typeDeTir_Tip-In', 'typeDeTir_Wrap-around', 'typeDeTir_Wrist Shot' 'previousEventTypeId_FACEOFF', 'previousEventTypeId_GIVEAWAY', 'previousEventTypeId_HIT', 'previousEventTypeId_MISSED_SHOT'].
 
 #### SHAP
-SHAP (SHapley Additive exPlanations) a été employé pour interpréter les caractéristiques sur lesquelles le modèle repose le plus. Cela nous a guidés dans la sélection de caractéristiques cruciales.
+Nous avons aussi utilisé la méthode SHAP (SHapley Additive exPlanations) pour interpréter les caractéristiques sur lesquelles le modèle repose le plus. Cela nous a permi de conserver les caractéristiques : ['periodTimeInSeconds', 'y', 'distanceToNet', 'timeDiff'].
 
 #### Évaluation des Modèles après la sélection de caractéristiques
 Chaque technique de sélection de caractéristiques a été suivie d'une évaluation du modèle XGBoost avec l'ensemble réduit de caractéristiques. Les accuracies ont été calculées pour chaque approche.
@@ -240,9 +242,11 @@ Les performances des différents modèles après la sélection de caractéristiq
 
 {% include image.html url="../public/fiabilite_selection.png" description = "Courbes de calibration des modèles XGBoost méthode de sélection de caractéristiques"%}
 
+On observe que l'AUC du modèle avec les sélections rfe est similaire à notre premier modèle XGBoost (c'est normal vu qu'il y a les mêmes caractéristiques). Sinon, la méthode qui se démarque le plus est celle qui utilise directement l'importance des caractéristiques du modèle XGBoost avec une AUC de 0.75 contre 0.72 et 0.73 pour les autres. Les mêmes conclusions se cconfirment avec les autres graphiques.
+
 Lien Comet de cette expérience :
 
-[XGBoost - Sélection de caractéristiques]()
+[XGBoost - Sélection de caractéristiques](https://www.comet.com/ift6758-a02/milestone2/f3ee208279ee48a69c4ba3eaa6196825)
 
 ## 5. Faites de votre mieux!
 
