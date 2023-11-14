@@ -250,6 +250,25 @@ Lien Comet de cette expérience :
 
 ## 5. Faites de votre mieux!
 
+**Forêt aléatoire avec ACP :**
+L'utilisation de l'Analyse en Composantes Principales (ACP) peut être une stratégie efficace pour améliorer la performance des modèles, en particulier dans des scénarios où le nombre de variables est élevé. Cette technique de réduction de dimensionnalité permet de simplifier les données tout en préservant leur structure d'information essentielle.
+Dans notre cas, notre exploration de l'Analyse en Composantes Principales (ACP) a révélé des nuances intrigantes dans les performances de notre modèle RandomForest. Voici un aperçu succinct des résultats :
+
+Précision Globale avec RandomForest après ACP : *90.60%*
+
+Précision pour la Classe 0 (Non-Goal) :*99.66%*
+
+Précision pour la Classe 1 (Goal) :*0.41%*
+
+La classe majoritaire (Non-Goal) est prédite avec une précision élevée, conformément à la fréquence élevée de cette classe. Cependant, la prédiction des événements de but (Classe 1) montre des défis, soulignant la nécessité de peaufiner davantage notre modèle.
+L'ACP a fourni des perspectives précieuses, mais des ajustements supplémentaires pourraient être explorés pour renforcer la capacité de prédiction des événements rares
+
+
+
+**Liens vers l'entrée des expériences :**
+
+[Forêt aléatoire avec analyse en composante principale](https://www.comet.com/ift6758-a02/milestone2/dc4807831b3545478c1982932389a018)
+
 
 
 ## 6. Évaluer sur l'ensemble de test 
