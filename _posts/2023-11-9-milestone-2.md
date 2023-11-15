@@ -289,9 +289,8 @@ En conclusion, malgré nos diverses tentatives d'optimisation et d'amélioration
 
 [Forêt aléatoire avec division des données](https://www.comet.com/ift6758-a02/milestone2/e6263c839798427b89d65d942f236aab)
 
-## 6. Évaluer sur l'ensemble de test 
 
-## 7. ÉvÉvaluer sur les ensembles de test
+## 6. ÉvÉvaluer sur les ensembles de test
 {% include image.html url="../public/normalROC.png" description = "Courbe ROC de modèles sur le test set saison normale 20-21"%}
 
 {% include image.html url="../public/normalTauxBut.png" description = "Taux de buts par rapport au centile de probabilité de modèles sur le test set saison normale 20-21"%}
