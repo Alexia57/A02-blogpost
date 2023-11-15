@@ -250,20 +250,36 @@ Lien Comet de cette expérience :
 
 ## 5. Faites de votre mieux!
 
-**Forêt aléatoire avec ACP :**
-L'utilisation de l'Analyse en Composantes Principales (ACP) peut être une stratégie efficace pour améliorer la performance des modèles, en particulier dans des scénarios où le nombre de variables est élevé. Cette technique de réduction de dimensionnalité permet de simplifier les données tout en préservant leur structure d'information essentielle.
-Dans notre cas, notre exploration de l'Analyse en Composantes Principales (ACP) a révélé des nuances intrigantes dans les performances de notre modèle RandomForest. Voici un aperçu succinct des résultats :
+**1. Forêt Aléatoire avec paramètres par défaut**
 
-Précision Globale avec RandomForest après ACP : *90.60%*
+Nous avons d'abord implémenté une forêt aléatoire en utilisant les paramètres par défaut de sklearn. Après avoir nettoyé nos données en supprimant les valeurs manquantes et en transformant les variables catégorielles en dummies, nous avons obtenu une précision globale de 0.909. Cependant, une analyse plus approfondie a révélé une disparité significative entre les classes : une précision de 0.998 pour la classe 0 (non-buts) contre seulement 0.014 pour la classe 1 (buts). Ce déséquilibre indiquait clairement que notre modèle était inefficace pour prédire les buts.
 
-Précision pour la Classe 0 (Non-Goal) :*99.66%*
+**2. Sélection de caractéristiques et PCA**
 
-Précision pour la Classe 1 (Goal) :*0.41%*
+Notre quête d'amélioration nous a conduits à explorer la sélection de caractéristiques basée sur le gain d'information, une stratégie qui s'est révélée insuffisante, car le retrait d'une seule variable sur 36 n'a pas notablement amélioré les performances. Face à cette impasse, nous nous sommes tournés vers l'Analyse en Composantes Principales (ACP), une technique de réduction de dimensionnalité réputée pour simplifier les données tout en préservant leur structure d'information essentielle.
+
+En intégrant l'ACP dans notre modèle RandomForest, nous avons observé une légère amélioration dans la prédiction des buts. Cependant, cette avancée s'est accompagnée d'une hausse des faux positifs. Voici un aperçu des résultats après l'implémentation de l'ACP :
+
+- Précision Globale avec RandomForest après ACP : *90.60%*
+
+- Précision pour la Classe 0 (Non-Goal) :*99.66%*
+
+- Précision pour la Classe 1 (Goal) :*0.41%*
 
 La classe majoritaire (Non-Goal) est prédite avec une précision élevée, conformément à la fréquence élevée de cette classe. Cependant, la prédiction des événements de but (Classe 1) montre des défis, soulignant la nécessité de peaufiner davantage notre modèle.
 L'ACP a fourni des perspectives précieuses, mais des ajustements supplémentaires pourraient être explorés pour renforcer la capacité de prédiction des événements rares
 
+**3. Rééquilibrage des classes et hyperparamétrage**
 
+Conscients de la nécessité d'un rééquilibrage des classes, nous avons adopté une approche 50/50, en conservant un nombre égal d'exemples pour les buts et les non-buts. L'utilisation d'une recherche aléatoire pour optimiser les hyperparamètres de la forêt aléatoire a nettement amélioré l'accuracy de la classe 1 (0.743), au détriment de la classe 0 (0.613) et de l'accuracy globale (0.679). 
+
+**4. Expérimentation avec un réseau de neurones**
+
+Nous avons ensuite expérimenté avec un réseau de neurones (MLP). Malgré des ajustements et l'utilisation de la PCA, les améliorations étaient minimes. Enfin, en testant sur des données équilibrées et en optimisant les hyperparamètres via une recherche aléatoire, nous avons abouti à des résultats similaires à ceux de la forêt aléatoire.
+
+**5. Conclusion**
+
+En conclusion, malgré nos diverses tentatives d'optimisation et d'amélioration, notre meilleur modèle s'est avéré être la forêt aléatoire avec les paramètres par défaut. Ce modèle a atteint une précision globale impressionnante de 90.91%, avec une performance exceptionnelle de 99.89% pour la classe 0 (non-buts). Toutefois, il est important de noter que sa capacité à prédire correctement la classe 1 (buts) est limitée, avec une précision de seulement 1.44%.
 
 **Liens vers l'entrée des expériences :**
 
