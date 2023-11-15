@@ -274,3 +274,24 @@ L'ACP a fourni des perspectives précieuses, mais des ajustements supplémentair
 [Forêt aléatoire avec division des données](https://www.comet.com/ift6758-a02/milestone2/e6263c839798427b89d65d942f236aab)
 
 ## 6. Évaluer sur l'ensemble de test 
+
+## 7. ÉvÉvaluer sur les ensembles de test
+{% include image.html url="../public/normalROC.png" description = "Courbe ROC de modèles sur le test set saison normale 20-21"%}
+
+{% include image.html url="../public/normalTauxBut.png" description = "Taux de buts par rapport au centile de probabilité de modèles sur le test set saison normale 20-21"%}
+
+{% include image.html url="../public/normalPropBut.png" description = "Proportion cumulée de buts vs percentile de probabilité pour plusieurs modèles sur le test set saison normale 20-21"%}
+
+{% include image.html url="../public/normalDiagFiab.png" description = "Courbe de calibration pour plusieurs modèles sur le même graphique, test set saison normale 20-21"%}
+
+La Courbe Roc montre que parmis les modèles, le XGBoost à la performance qui s'éloigne le plus d'un modèle aléatoire. Les courbes de taux de buts par rapport au centile de probabilité sont assez similaire avec XGBoost étant légèrement meilleur. XGBoost et la forêt ont tous deux une courbe plus rapproché du coin supérieur gauche et donc le modèle avec le cumul des plus aux taux de confiance, que les autres modèles. Finalement, le diagramme de fiabilité est très similaire au diagrame pour les valeur de validation. Le modèle forêt à la confiance la plus rapproché du modèle parfait. Les modèles semblent fonctionné comme la validation nous laissait présager.
+
+{% include image.html url="../public/normalROC.png" description = "Courbe ROC de modèles sur le test set saison éliminatoire 20-21"%}
+
+{% include image.html url="../public/normalTauxBut.png" description = "Taux de buts par rapport au centile de probabilité de modèles sur le test set saison éliminatoire 20-21"%}
+
+{% include image.html url="../public/normalPropBut.png" description = "Proportion cumulée de buts vs percentile de probabilité pour plusieurs modèles sur le test set saison éliminatoire 20-21"%}
+
+{% include image.html url="../public/normalDiagFiab.png" description = "Courbe de calibration pour plusieurs modèles sur le même graphique, test set saison éliminatoire 20-21"%}
+
+Les observations sur cette nouvelle ensemble de donnés sont très similaire au observations précédentes, avec les données test de la saison régulière. Le modèle XGBoost est toujours le plus fiable, avec le modèle forêt comme proche deuxième. La similarité entre la saison normale et la saison régulière, rend ces résultats prévisibles.
