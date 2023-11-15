@@ -256,7 +256,7 @@ Nous avons d'abord implémenté une forêt aléatoire en utilisant les paramètr
 
 **2. Sélection de caractéristiques et PCA**
 
-Notre quête d'amélioration nous a conduits à explorer la sélection de caractéristiques basée sur le gain d'information, une stratégie qui s'est révélée insuffisante, car le retrait d'une seule variable sur 36 n'a pas notablement amélioré les performances. Face à cette impasse, nous nous sommes tournés vers l'Analyse en Composantes Principales (ACP), une technique de réduction de dimensionnalité réputée pour simplifier les données tout en préservant leur structure d'information essentielle.
+Notre quête d'amélioration nous a conduit à explorer la sélection de caractéristiques basée sur le gain d'information, une stratégie qui s'est révélée insuffisante, car le retrait d'une seule variable sur 36 n'a pas notablement amélioré les performances. Face à cette impasse, nous nous sommes tournés vers l'Analyse en Composantes Principales (ACP), une technique de réduction de dimensionnalité réputée pour simplifier les données tout en préservant leur structure d'information essentielle.
 
 En intégrant l'ACP dans notre modèle RandomForest, nous avons observé une légère amélioration dans la prédiction des buts. Cependant, cette avancée s'est accompagnée d'une hausse des faux positifs. Voici un aperçu des résultats après l'implémentation de l'ACP :
 
@@ -281,13 +281,31 @@ Nous avons ensuite expérimenté avec un réseau de neurones (MLP). Malgré des 
 
 En conclusion, malgré nos diverses tentatives d'optimisation et d'amélioration, notre meilleur modèle s'est avéré être la forêt aléatoire avec les paramètres par défaut. Ce modèle a atteint une précision globale impressionnante de 90.91%, avec une performance exceptionnelle de 99.89% pour la classe 0 (non-buts). Toutefois, il est important de noter que sa capacité à prédire correctement la classe 1 (buts) est limitée, avec une précision de seulement 1.44%.
 
-**Liens vers l'entrée des expériences :**
 
-[Forêt aléatoire avec analyse en composante principale](https://www.comet.com/ift6758-a02/milestone2/dc4807831b3545478c1982932389a018)
+**Figures :**
+
+*Courbe ROC et AUC*
+{% include image.html url="../public/ROCpart6.png" description = "Courbes ROC des test des meilleurs modèles"%}
+
+*Taux de buts vs percentile de probabilité*
+{% include image.html url="../public/TDBvsPDPpart6.png" description = "Graphe représentant le taux de buts contre le percentile de probabilités"%}
+
+*Proportion cumulée de buts vs percentile de probabilité*
+{% include image.html url="../public/PCBvsPDPpart6.png" description = "Graphe représentant la proportion cumulée de buts contre le percentile de probabilités"%}
+
+*Courbe de fiabilité et de calibration*
+{% include image.html url="../public/CourbeCalibrationpart6.png" description = "Courbe de calibration"%}
+
+
+**Liens vers l'entrée des expériences :**
 
 [Forêt aléatoire originale](https://www.comet.com/ift6758-a02/milestone2/8e40b7e7dbd649668b61935000f9d52c)
 
-[Forêt aléatoire avec division des données](https://www.comet.com/ift6758-a02/milestone2/e6263c839798427b89d65d942f236aab)
+[Forêt aléatoire avec analyse en composante principale](https://www.comet.com/ift6758-a02/milestone2/dc4807831b3545478c1982932389a018)
+
+[Forêt aléatoire avec rééquilibrage des données](https://www.comet.com/ift6758-a02/milestone2/e6263c839798427b89d65d942f236aab)
+
+[Réseau de neurone](https://www.comet.com/ift6758-a02/milestone2/2e420a3aac5d4491934a1c2c3f93ee97)
 
 
 ## 6. ÉvÉvaluer sur les ensembles de test
