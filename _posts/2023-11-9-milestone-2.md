@@ -303,12 +303,16 @@ En conclusion, malgré nos diverses tentatives d'optimisation et d'amélioration
 
 [Forêt aléatoire avec analyse en composante principale](https://www.comet.com/ift6758-a02/milestone2/dc4807831b3545478c1982932389a018)
 
-[Forêt aléatoire avec rééquilibrage des données](https://www.comet.com/ift6758-a02/milestone2/e6263c839798427b89d65d942f236aab)
+[Forêt aléatoire avec rééquilibrage des données](https://www.comet.com/ift6758-a02/milestone2/b8b6af5466ce4525acf9512a3c12692b)
 
 [Réseau de neurone](https://www.comet.com/ift6758-a02/milestone2/2e420a3aac5d4491934a1c2c3f93ee97)
 
+[Réseau de neurone avec analyse en composante principale](https://www.comet.com/ift6758-a02/milestone2/50394bd1aff84e71bf30e995b801d863)
 
-## 6. ÉvÉvaluer sur les ensembles de test
+[Réseau de neurone avec rééquilibrage des données](https://www.comet.com/ift6758-a02/milestone2/9c0070fb05c643ab9f2a62da7b1965e2)
+
+
+## 6. Évaluer sur les ensembles de test
 {% include image.html url="../public/normalROC.png" description = "Courbe ROC de modèles sur le test set saison normale 20-21"%}
 
 {% include image.html url="../public/normalTauxBut.png" description = "Taux de buts par rapport au centile de probabilité de modèles sur le test set saison normale 20-21"%}
